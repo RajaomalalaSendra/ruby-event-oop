@@ -6,7 +6,7 @@ class Event
 		@start_date = Time.parse(t)
 		@length = l.to_i
 		@title = ttl
-		@attendees = att.grep(/@/) 
+		@attendees = att 
 	end
 	def postpone_24h
 		@start_date +=  24 * 60 * 60
