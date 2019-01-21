@@ -39,7 +39,7 @@ class Event
 	end
 end
 class EventCreator
-	attr_writer :start_date, :length, :title, :attendees, :get_date
+	attr_accessor :start_date, :length, :title, :attendees, :get_date
 	def initialize
 		# Ask the title of the event
 		puts("Salut, tu veux créer un événement ? Cool !\nCommençons, quel est le nom de l'événement ?")
@@ -61,7 +61,20 @@ class EventCreator
 		# word of saying goodbye
 		puts("Super, c'est noté, à bientôt !")
 	end
+	def title
+		return @title
+	end
+	def start_date
+		return @start_date
+	end
+	def length
+		return @length
+	end
+	def attendees
+		return @attendees
+	end
 end
+
 new_event = Event.new("2019-01-21 15:00", 60, "standup quotidien", ["truc@machin.com", "bidule@chose.fr"])
 puts new_event.start_date
 puts new_event.length
