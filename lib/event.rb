@@ -21,7 +21,7 @@ class Event
 	end
 	def is_future
 		!self.is_past
-			puts "The event in #{start_date} has been past"
+			puts "The event in #{start_date} will be come."
 		end
 	end
 	def is_soon
@@ -38,7 +38,30 @@ class Event
 		puts "Invité: #{attendees.join(", ")} "
 	end
 end
-
+class EventCreator
+	attr_accessor :a
+	@a = Event.new(start_date, length, title, attendees)
+	def initialize
+		# Ask the title of the event
+		puts("Salut, tu veux créer un événement ? Cool !\nCommençons, quel est le nom de l'événement ?")
+		print("> ")
+		a.title = gets.chomp()
+		# Ask the place
+		puts("Super, quand aura-t-il lieu ?")
+		print("> ")
+		a.start_date = gets.chomp()
+		# Ask the length of the appoitement
+		puts("Au top, combien de temps en minutes va-t-il durer ?")
+		print("> ")
+		a.length = gets.chomp()
+		# list of the mail of the attendees
+		puts("Génial, qui va participer ? Balance leurs emails")
+		print("> ")
+		a.attendees = gets.chomp()
+		# word of saying goodbye
+		puts("Super, c'est noté, à bientôt !")
+	end
+end
 new_event = Event.new("2019-01-21 15:00", 60, "standup quotidien", ["truc@machin.com", "bidule@chose.fr"])
 puts new_event.start_date
 puts new_event.length
