@@ -92,3 +92,29 @@ class DateParser
 	end
   end
 end
+class CalendarDisplayer
+	attr_accessor :month, :day, :event, :hour, :length
+	@@month = ["janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "décembre"]
+	@@days = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+	def initialize(the_month)
+		@month = the_month.to_a
+	end
+	def event(the_day, the_hour, the_event)
+		@day = the_day
+		@hour = the_hour
+		@event = the_event
+	end
+	def show(the_month, length)
+		@length = length
+		@@days.each do |i|
+			print "  " + @@days[i] + "    "
+		end
+		print "-----------" * 7
+		for j in 1..length
+		@@days.each do |i|
+			puts "|" + i + "      "
+		end
+		print "-----------" * 7
+		puts "\n"
+	end
+end
