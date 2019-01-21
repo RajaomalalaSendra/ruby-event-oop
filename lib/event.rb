@@ -20,7 +20,7 @@ class Event
 		end
 	end
 	def is_future
-		!self.is_past
+		if !self.is_past
 			puts "The event in #{start_date} will be come."
 		end
 	end
@@ -39,25 +39,25 @@ class Event
 	end
 end
 class EventCreator
-	attr_accessor :a
-	@a = Event.new(start_date, length, title, attendees)
+	attr_writer :start_date, :length, :title, :attendees, :get_date
 	def initialize
 		# Ask the title of the event
 		puts("Salut, tu veux créer un événement ? Cool !\nCommençons, quel est le nom de l'événement ?")
 		print("> ")
-		a.title = gets.chomp()
+		@title = gets.chomp()
 		# Ask the place
 		puts("Super, quand aura-t-il lieu ?")
 		print("> ")
-		a.start_date = gets.chomp()
+		@get_date = gets.chomp()
+		@start_date = Time.parse(@get_date)
 		# Ask the length of the appoitement
 		puts("Au top, combien de temps en minutes va-t-il durer ?")
 		print("> ")
-		a.length = gets.chomp()
+		@length = gets.chomp().to_i
 		# list of the mail of the attendees
 		puts("Génial, qui va participer ? Balance leurs emails")
 		print("> ")
-		a.attendees = gets.chomp()
+		@attendees = gets.chomp()
 		# word of saying goodbye
 		puts("Super, c'est noté, à bientôt !")
 	end
@@ -69,3 +69,5 @@ puts new_event.title
 puts new_event.attendees
 puts new_event.is_soon
 puts new_event.to_s
+puts andre = EventCreator.new
+puts andre.length
