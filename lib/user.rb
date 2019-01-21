@@ -1,22 +1,30 @@
 class User
-	attr_accessor :email, :name
-	@@count = 0
-	# creation of initialize
-	def initialize(my_email)
-		@email = my_email
-		return my_email
-	end
-	# creation of the name
-	def name(my_name)
-		@name = my_name
-		return my_name
-	end
-	# creation of the count
-	def self.count
-		@@count += 1
-		return @@count
-	end
+  attr_accessor :email, :encrypted_password
+  @@user_count = 0
+
+  def initialize(email_to_save)
+    @email = email_to_save
+    @@user_count = @@user_count + 1
+  end
+  def password(password)
+  	@encrypted_password = password
+  end
+
+  def change_password(new_password)
+    @encrypted_password = encrypt(new_password)
+  end
+
+  def show_itself
+    puts self
+  end
+
+  def self.count
+    return @@user_count
+  end
+
+  private
+
+  def encrypt(string_to_encrypt)
+    return "##ENCRYPTED##"
+  end
 end
-user = User.new("example@example.com")
-user.name("Rakoto")
-User.count

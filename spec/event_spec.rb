@@ -9,7 +9,7 @@ describe Event do
 
 	describe 'initializer' do
 		it 'creates an event' do
-
+			
 		end
 	end
 
