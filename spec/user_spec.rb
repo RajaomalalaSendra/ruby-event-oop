@@ -30,54 +30,6 @@ describe User do
   end
 
 
-
-  describe 'instance methods' do
-
-    describe 'change_password' do
-      it "changes password to ##ENCRYPTED##" do
-        user = User.new("email@email.com")
-        password = "some string"
-        user.change_password(password)
-        expect(user.password).to eq("##ENCRYPTED##")
-      end
-    end
-
-    describe 'show_itself' do
-      it "shows itself" do
-        user = User.new("email@email.com")
-        user.show_itself
-        expect do
-          user.show_itself
-        end.to output("#{user}\n").to_stdout
-        # OK celle là est super hard, mais en même temps c'est pas des méthodes que l'on utilise souvent. Solution trouvée ici : https://stackoverflow.com/a/38377720
-      end
-    end
-
-  end
-
-  describe 'instance variables' do
-
-    describe '@email' do
-
-      it 'can be read' do 
-        email = "email@email.com"
-        user = User.new(email)
-        expect(user.email).to eq(email)
-      end
-
-      it 'can be written' do 
-        email = "email@email.com"
-        user = User.new(email)
-        email_2 = "email_2@email.com"
-        user.email = email_2
-        expect(user.email).not_to eq(email)
-        expect(user.email).to eq(email_2)
-      end
-
-    end
-
-  end
-
   describe 'class methods' do
 
     describe 'self.count' do
