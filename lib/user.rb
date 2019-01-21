@@ -12,4 +12,7 @@ class User
   def name(the_name)
     @name = the_name
   end
+  def self.find_by_email(the_email)
+    @
+  end
 end
