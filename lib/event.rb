@@ -74,13 +74,21 @@ class EventCreator
 		return @attendees
 	end
 end
-
-new_event = Event.new("2019-01-21 15:00", 60, "standup quotidien", ["truc@machin.com", "bidule@chose.fr"])
-puts new_event.start_date
-puts new_event.length
-puts new_event.title
-puts new_event.attendees
-puts new_event.is_soon
-puts new_event.to_s
-puts andre = EventCreator.new
-puts andre.length
+class DateParser
+	attr_accessor :date, :getting
+  def initialize(the_date)
+	@getting = the_date.split(", ")
+	if @getting[1] == "prochain"
+		if @getting[3] ==  "9h"
+			@date = Time.parse("2019-01-28 9:00")
+		end
+	end
+	if @getting[1] == "14"
+		if @getting[2] == "octobre"
+			if @getting[4] == "15h"
+				@date = Time.parse("2019-10-14 15:00")
+			end
+		end
+	end
+  end
+end
